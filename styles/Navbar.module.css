@@ -1,0 +1,21 @@
+.navbar {
+  background: #fd7e14;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .navbarNav {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar .navbarNav .navItem + .navItem {
+  margin-left: 10px;
+}
+
+.navbar .navbarNav .navItem .navLink {
+  color: #fff;
+}
