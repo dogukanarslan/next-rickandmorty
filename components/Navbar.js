@@ -1,4 +1,5 @@
 import styles from '../styles/Navbar.module.css';
+import Button from './Button';
 
 const Navbar = () => {
   return (
@@ -14,7 +15,7 @@ const Navbar = () => {
           <a className={styles.navLink}>Contact</a>
         </li>
       </ul>
-      <button>Button</button>
+      <Button label={'Button'} />
     </nav>
   );
 };
