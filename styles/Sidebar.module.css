@@ -1,0 +1,6 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  text-align: center;
+}
