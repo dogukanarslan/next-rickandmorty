@@ -2,7 +2,8 @@
   background: #fd7e14;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navbar .navbarNav {
@@ -18,4 +19,12 @@
 
 .navbar .navbarNav .navItem .navLink {
   color: #fff;
+}
+
+/* Mobile menu */
+@media all and (min-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
