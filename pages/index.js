@@ -20,7 +20,7 @@ export default function Home(props) {
   const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
   return (
-    <div>
+    <div className="row">
       <Sidebar />
       <table className={styles.table}>
         <thead>
