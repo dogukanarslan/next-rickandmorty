@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
