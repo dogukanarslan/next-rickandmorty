@@ -7,11 +7,11 @@ const Sidebar = () => {
       <Link href="/">
         <a>Characters</a>
       </Link>
-      <Link href="/episodes">
-        <a>Episodes</a>
-      </Link>
       <Link href="/locations">
         <a>Locations</a>
+      </Link>
+      <Link href="/episodes">
+        <a>Episodes</a>
       </Link>
     </div>
   );
