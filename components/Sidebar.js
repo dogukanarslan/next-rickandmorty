@@ -1,11 +1,18 @@
 import styles from '../styles/Sidebar.module.css';
+import Link from 'next/link';
 
 const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
-      <a>Characters</a>
-      <a>Episodes</a>
-      <a>Locations</a>
+      <Link href="/">
+        <a>Characters</a>
+      </Link>
+      <Link href="/episodes">
+        <a>Episodes</a>
+      </Link>
+      <Link href="/locations">
+        <a>Locations</a>
+      </Link>
     </div>
   );
 };
