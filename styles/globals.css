@@ -23,3 +23,9 @@ a {
 .col {
   flex: 1;
 }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 10px;
+}
