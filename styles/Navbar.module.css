@@ -21,6 +21,10 @@
   color: #fff;
 }
 
+.navbar .navbarNav .navItem .navLogo {
+  color: #fd7e14
+}
+
 /* Mobile menu */
 @media all and (min-width: 600px) {
   .navbar {
