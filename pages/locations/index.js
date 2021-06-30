@@ -17,7 +17,7 @@ export default function Location(props) {
     data: { results: locations }
   } = props;
 
-  const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
+  const headers = ['Name', 'Type', 'Dimension'];
 
   return (
     <div className="row">
@@ -34,10 +34,8 @@ export default function Location(props) {
           {locations.map((location) => (
             <tr key={location.id}>
               <td>{location.name}</td>
-              <td>{location.status}</td>
-              <td>{location.species}</td>
               <td>{location.type}</td>
-              <td>{location.gender}</td>
+              <td>{location.dimension}</td>
             </tr>
           ))}
         </tbody>
