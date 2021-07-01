@@ -21,25 +21,29 @@ export default function Location(props) {
 
   return (
     <div className="row">
-      <Sidebar />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {locations.map((location) => (
-            <tr key={location.id}>
-              <td>{location.name}</td>
-              <td>{location.type}</td>
-              <td>{location.dimension}</td>
+      <div className="col col-2">
+        <Sidebar />
+      </div>
+      <div className="col col-10">
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {locations.map((location) => (
+              <tr key={location.id}>
+                <td>{location.name}</td>
+                <td>{location.type}</td>
+                <td>{location.dimension}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

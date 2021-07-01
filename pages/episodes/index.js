@@ -21,25 +21,29 @@ export default function Episode(props) {
 
   return (
     <div className="row">
-      <Sidebar />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {episodes.map((episode) => (
-            <tr key={episode.id}>
-              <td>{episode.name}</td>
-              <td>{episode.air_date}</td>
-              <td>{episode.episode}</td>
+      <div className="col col-2">
+        <Sidebar />
+      </div>
+      <div className="col col-10">
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {episodes.map((episode) => (
+              <tr key={episode.id}>
+                <td>{episode.name}</td>
+                <td>{episode.air_date}</td>
+                <td>{episode.episode}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
