@@ -1,7 +1,7 @@
 import styles from '../../styles/Table.module.css';
 
 export async function getStaticProps() {
-  const res = await fetch('https://rickandmortyapi.com/api/location');
+  const res = await fetch(`${process.env.RICKANDMORTY_API}/location`);
   const data = await res.json();
 
   return {
