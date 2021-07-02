@@ -1,5 +1,6 @@
 import styles from '../../styles/Table.module.css';
 import Sidebar from '../../components/Sidebar';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps() {
   const res = await fetch('https://rickandmortyapi.com/api/location');
@@ -17,12 +18,14 @@ export default function Location(props) {
     data: { results: locations }
   } = props;
 
+  const router = useRouter();
+
   const headers = ['Name', 'Type', 'Dimension'];
 
   return (
     <div className="row">
       <div className="col col-2">
-        <Sidebar />
+        <Sidebar selected={router.pathname} />
       </div>
       <div className="col col-10">
         <table className={styles.table}>

@@ -1,17 +1,23 @@
 import styles from '../styles/Sidebar.module.css';
 import Link from 'next/link';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { selected } = props;
+
   return (
     <div className={styles.sidebar}>
       <Link href="/">
-        <a>Characters</a>
+        <a className={selected === '/' ? styles.active : ''}>Characters</a>
       </Link>
       <Link href="/locations">
-        <a>Locations</a>
+        <a className={selected === '/locations' ? styles.active : ''}>
+          Locations
+        </a>
       </Link>
       <Link href="/episodes">
-        <a>Episodes</a>
+        <a className={selected === '/episodes' ? styles.active : ''}>
+          Episodes
+        </a>
       </Link>
     </div>
   );
