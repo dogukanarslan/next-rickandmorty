@@ -16,7 +16,9 @@ function MyApp({ Component, pageProps }) {
             <Sidebar selected={router.pathname} />
           </div>
           <div className="col col-10">
-            <Component {...pageProps} />
+            <div className="scrollable-container">
+              <Component {...pageProps} />
+            </div>
           </div>
         </div>
       </div>
