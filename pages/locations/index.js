@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import styles from '../../styles/Table.module.css';
 
 export async function getStaticProps() {
@@ -16,6 +17,8 @@ export default function Location(props) {
     data: { results: locations }
   } = props;
 
+  const router = useRouter();
+
   const headers = ['Name', 'Type', 'Dimension'];
 
   return (
@@ -29,7 +32,10 @@ export default function Location(props) {
       </thead>
       <tbody>
         {locations.map((location) => (
-          <tr key={location.id}>
+          <tr
+            key={location.id}
+            onClick={() => router.push(`${router.pathname}/${location.id}`)}
+          >
             <td>{location.name}</td>
             <td>{location.type}</td>
             <td>{location.dimension}</td>

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from '../styles/DetailCard.module.css';
+
 const CharacterDetail = (props) => {
   const { name, gender, image } = props.character;
 

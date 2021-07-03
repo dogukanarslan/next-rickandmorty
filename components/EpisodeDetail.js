@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styles from '../styles/DetailCard.module.css';
+
 const EpisodeDetail = (props) => {
   const { name, air_date, episode } = props.episode;
 
