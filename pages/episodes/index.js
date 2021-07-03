@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import styles from '../../styles/Table.module.css';
 
 export async function getStaticProps() {
@@ -16,6 +17,8 @@ export default function Episode(props) {
     data: { results: episodes }
   } = props;
 
+  const router = useRouter();
+
   const headers = ['Name', 'Air Date', 'Episode'];
 
   return (
@@ -29,7 +32,10 @@ export default function Episode(props) {
       </thead>
       <tbody>
         {episodes.map((episode) => (
-          <tr key={episode.id}>
+          <tr
+            key={episode.id}
+            onClick={() => router.push(`${router.pathname}/${episode.id}`)}
+          >
             <td>{episode.name}</td>
             <td>{episode.air_date}</td>
             <td>{episode.episode}</td>

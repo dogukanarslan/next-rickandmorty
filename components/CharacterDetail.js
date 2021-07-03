@@ -5,7 +5,7 @@ const CharacterDetail = (props) => {
 
   return (
     <div className={styles.detailCard}>
-      <Image src={image} alt="Location" width={200} height={200} />
+      <Image src={image} alt="Character" width={200} height={200} />
       <h4>{name}</h4>
       <h4>{gender}</h4>
     </div>

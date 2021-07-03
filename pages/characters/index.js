@@ -1,5 +1,5 @@
-import styles from '../../styles/Table.module.css';
 import { useRouter } from 'next/router';
+import styles from '../../styles/Table.module.css';
 
 export async function getStaticProps() {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/character`);
