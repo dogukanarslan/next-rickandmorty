@@ -1,4 +1,5 @@
 import styles from '../../styles/Table.module.css';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps() {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/character`);
@@ -16,6 +17,8 @@ export default function Home(props) {
     data: { results: characters }
   } = props;
 
+  const router = useRouter();
+
   const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
   return (
@@ -29,7 +32,10 @@ export default function Home(props) {
       </thead>
       <tbody>
         {characters.map((character) => (
-          <tr key={character.id}>
+          <tr
+            key={character.id}
+            onClick={() => router.push(`${router.pathname}/${character.id}`)}
+          >
             <td>{character.name}</td>
             <td>{character.status}</td>
             <td>{character.species}</td>
