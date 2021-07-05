@@ -7,7 +7,9 @@ const Sidebar = (props) => {
   return (
     <div className={styles.sidebar}>
       <Link href="/characters">
-        <a className={selected === '/characters' ? styles.active : ''}>Characters</a>
+        <a className={selected === '/characters' ? styles.active : ''}>
+          Characters
+        </a>
       </Link>
       <Link href="/locations">
         <a className={selected === '/locations' ? styles.active : ''}>

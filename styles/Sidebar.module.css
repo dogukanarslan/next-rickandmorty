@@ -1,16 +1,15 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  background-color: #222;
+  background-color: #fd7e14;
   text-align: center;
 }
 
 .sidebar a {
   color: #fff;
   padding: 10px 15px;
-  background-color: #222;
 }
 
 .sidebar .active {
-  background-color: #fd7e14;
+  background-color: #222;
 }
