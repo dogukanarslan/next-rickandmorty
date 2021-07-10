@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import styles from '../../styles/Table.module.css';
-import Button from '../../components/Button';
+import PaginationButtons from '../../components/PaginationButtons';
 
 export async function getStaticProps() {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/episode`);
@@ -47,13 +47,7 @@ export default function Episode(props) {
           </tbody>
         </table>
       </div>
-      <div className="d-flex justify-content-between">
-        <Button label="Previous" />
-        <span>
-          {episodes.length} / {info.count}
-        </span>
-        <Button label="Next" />
-      </div>
+      <PaginationButtons data={episodes} info={info} />
     </>
   );
 }
