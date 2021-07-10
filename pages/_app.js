@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
@@ -21,9 +21,7 @@ function MyApp({ Component, pageProps }) {
             <Sidebar selected={router.pathname} />
           </div>
           <div className="col col-10">
-            <div className="scrollable-container">
-              <Component {...pageProps} />
-            </div>
+            <Component {...pageProps} />
           </div>
         </div>
       </div>

@@ -24,27 +24,29 @@ export default function Location(props) {
 
   return (
     <>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {locations.map((location) => (
-            <tr
-              key={location.id}
-              onClick={() => router.push(`${router.pathname}/${location.id}`)}
-            >
-              <td>{location.name}</td>
-              <td>{location.type}</td>
-              <td>{location.dimension}</td>
+      <div className="scrollable-container">
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {locations.map((location) => (
+              <tr
+                key={location.id}
+                onClick={() => router.push(`${router.pathname}/${location.id}`)}
+              >
+                <td>{location.name}</td>
+                <td>{location.type}</td>
+                <td>{location.dimension}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="d-flex justify-content-between">
         <Button label="Previous" />
         <span>

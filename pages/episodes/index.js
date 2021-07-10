@@ -24,27 +24,29 @@ export default function Episode(props) {
 
   return (
     <>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {episodes.map((episode) => (
-            <tr
-              key={episode.id}
-              onClick={() => router.push(`${router.pathname}/${episode.id}`)}
-            >
-              <td>{episode.name}</td>
-              <td>{episode.air_date}</td>
-              <td>{episode.episode}</td>
+      <div className="scrollable-container">
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {episodes.map((episode) => (
+              <tr
+                key={episode.id}
+                onClick={() => router.push(`${router.pathname}/${episode.id}`)}
+              >
+                <td>{episode.name}</td>
+                <td>{episode.air_date}</td>
+                <td>{episode.episode}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="d-flex justify-content-between">
         <Button label="Previous" />
         <span>

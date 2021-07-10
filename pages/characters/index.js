@@ -24,29 +24,33 @@ export default function Home(props) {
 
   return (
     <>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {characters.map((character) => (
-            <tr
-              key={character.id}
-              onClick={() => router.push(`${router.pathname}/${character.id}`)}
-            >
-              <td>{character.name}</td>
-              <td>{character.status}</td>
-              <td>{character.species}</td>
-              <td>{character.type}</td>
-              <td>{character.gender}</td>
+      <div className="scrollable-container">
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {characters.map((character) => (
+              <tr
+                key={character.id}
+                onClick={() =>
+                  router.push(`${router.pathname}/${character.id}`)
+                }
+              >
+                <td>{character.name}</td>
+                <td>{character.status}</td>
+                <td>{character.species}</td>
+                <td>{character.type}</td>
+                <td>{character.gender}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="d-flex justify-content-between">
         <Button label="Previous" />
         <span>
