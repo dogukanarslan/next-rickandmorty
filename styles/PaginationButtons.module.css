@@ -1,0 +1,11 @@
+.container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page {
+  color: #fd7e14;
+  font-size: 20px;
+  font-weight: bold;
+}
