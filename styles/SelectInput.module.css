@@ -1,0 +1,28 @@
+.wrapper {
+  color: #fff;
+  position: relative;
+  width: 350px;
+  margin-top: 10px;
+}
+
+.wrapper::after {
+  font-size: 24px;
+  color: #000;
+  content: '▾';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 8px;
+  border: none;
+}
