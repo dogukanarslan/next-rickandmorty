@@ -18,7 +18,7 @@ const Navbar = () => {
           <a className={styles.navLink}>Contact</a>
         </li>
       </ul>
-      <Button label={'Button'} />
+      <Button label={'Light'} />
     </nav>
   );
 };
