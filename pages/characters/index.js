@@ -69,13 +69,7 @@ export default function Home(props) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col col-12">
-            <PaginationButtons data={characters} info={info} />
-          </div>
-        </div>
+        <PaginationButtons data={characters} info={info} />
       </div>
     </>
   );
