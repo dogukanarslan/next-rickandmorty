@@ -10,6 +10,10 @@
   padding: 10px 15px;
 }
 
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
 .sidebar .active {
   background-color: #222;
 }
