@@ -1,8 +1,14 @@
 .wrapper {
+  color: #fff;
   width: 350px;
 }
 
 .input {
   width: 100%;
   padding: 8px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
 }
