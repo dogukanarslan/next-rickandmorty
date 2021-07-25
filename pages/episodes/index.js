@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import styles from '../../styles/Table.module.css';
 import PaginationButtons from '../../components/PaginationButtons';
+import TextInput from '../../components/TextInput';
 
 export async function getStaticProps() {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/episode`);
@@ -26,8 +27,12 @@ export default function Episode(props) {
     <>
       <div className="container">
         <div className="row">
-          <div className="col col-6"></div>
-          <div className="col col-6"></div>
+          <div className="col col-6">
+            <TextInput placeholder="Name" label="Name" />
+          </div>
+          <div className="col col-6">
+            <TextInput placeholder="Episode" label="Episode" />
+          </div>
         </div>
       </div>
       <div className="container">
