@@ -1,0 +1,19 @@
+.navbar {
+  color: #fff;
+  background-color: #0e0e0e;
+  padding: 1rem;
+  border-bottom: 1px solid gray;
+  text-transform: capitalize;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar .title {
+  text-align: center;
+}
+
+.navbar li {
+  width: 100%;
+}
