@@ -6,6 +6,6 @@ export default function Home(props) {
 
   useEffect(() => {
     router.push('/characters');
-  }, []);
+  }, [router]);
   return null;
 }

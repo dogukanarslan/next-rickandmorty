@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
-import Navbar from '../components/Navbar';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 
@@ -13,8 +12,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
 
       </Head>
-
-      <Navbar />
       <div className="container">
         <div className="row">
           <div className="col col-2">
