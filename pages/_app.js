@@ -9,9 +9,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
-      <Head>
-
-      </Head>
+      <Head></Head>
       <div className="container">
         <div className="row">
           <div className="col col-2">

@@ -6,7 +6,12 @@ const TextInput = (props) => {
   return (
     <div className={styles.wrapper}>
       <label className={styles.label}>{label}</label>
-      <input className={styles.input} type="text" placeholder={placeholder} onChange={onChange} />
+      <input
+        className={styles.input}
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     </div>
   );
 };
