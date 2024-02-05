@@ -3,25 +3,38 @@ import styles from '../../styles/Table.module.css';
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.RICKANDMORTY_API}/episode`);
+export async function getServerSideProps(context) {
+  const res = await fetch(
+    `${process.env.RICKANDMORTY_API}/episode?page=${context.query.page}`
+  );
   const data = await res.json();
 
   return {
     props: {
-      data
+      episodes: data.results,
+      info: data.info,
+      currentPage: context.query.page || 1
     }
   };
 }
 
 export default function Episode(props) {
-  const {
-    data: { results: episodes, info }
-  } = props;
+  const { episodes, info, currentPage } = props;
 
   const router = useRouter();
 
   const headers = ['Name', 'Air Date', 'Episode'];
+
+  const changePage = (type) => {
+    if (!info[type]) {
+      return;
+    }
+
+    const searchParams = new URL(info[type]).searchParams;
+    const page = searchParams.get('page');
+
+    router.push(`/episodes?page=${page}`);
+  };
 
   return (
     <>
@@ -65,7 +78,7 @@ export default function Episode(props) {
             </div>
           </div>
         </div>
-        <PaginationButtons data={episodes} info={info} />
+        <PaginationButtons changePage={changePage} currentPage={currentPage} />
       </div>
     </>
   );
