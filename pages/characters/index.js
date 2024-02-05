@@ -4,25 +4,38 @@ import { filters } from '../../constants';
 import PaginationButtons from '../../components/PaginationButtons';
 import SelectInput from '../../components/SelectInput';
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.RICKANDMORTY_API}/character`);
+export async function getServerSideProps(context) {
+  const res = await fetch(
+    `${process.env.RICKANDMORTY_API}/character?page=${context.query.page}`
+  );
   const data = await res.json();
 
   return {
     props: {
-      data
+      characters: data.results,
+      info: data.info,
+      currentPage: context.query.page || 1
     }
   };
 }
 
 export default function Home(props) {
-  const {
-    data: { results: characters, info }
-  } = props;
+  const { characters, info, currentPage } = props;
 
   const router = useRouter();
 
   const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
+
+  const changePage = (type) => {
+    if (!info[type]) {
+      return;
+    }
+
+    const searchParams = new URL(info[type]).searchParams;
+    const page = searchParams.get('page');
+
+    router.push(`/characters?page=${page}`);
+  };
 
   return (
     <>
@@ -69,7 +82,7 @@ export default function Home(props) {
             </div>
           </div>
         </div>
-        <PaginationButtons data={characters} info={info} />
+        <PaginationButtons changePage={changePage} currentPage={currentPage} />
       </div>
     </>
   );
