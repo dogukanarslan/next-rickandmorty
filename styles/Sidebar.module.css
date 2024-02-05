@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #0e0e0e;
+  background-color: var(--primary-color);
 }
 
 .sidebar a {
@@ -12,5 +12,5 @@
 
 .sidebar a:hover,
 .sidebar .active {
-  color: #fd7e14;
+  color: var(--secondary-color);
 }

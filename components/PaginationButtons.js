@@ -7,9 +7,9 @@ const PaginationButtons = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Button label="&#9198;" onClick={() => changePage('prev')} />
+      <Button label="&#9204;" onClick={() => changePage('prev')} />
       <h1 className={styles.title}>{currentPage}</h1>
-      <Button label="&#9197;" onClick={() => changePage('next')} />
+      <Button label="&#9205;" onClick={() => changePage('next')} />
     </div>
   );
 };
