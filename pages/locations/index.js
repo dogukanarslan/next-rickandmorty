@@ -3,25 +3,38 @@ import styles from '../../styles/Table.module.css';
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.RICKANDMORTY_API}/location`);
+export async function getServerSideProps(context) {
+  const res = await fetch(
+    `${process.env.RICKANDMORTY_API}/location?page=${context.query.page}`
+  );
   const data = await res.json();
 
   return {
     props: {
-      data
+      locations: data.results,
+      info: data.info,
+      currentPage: context.query.page || 1
     }
   };
 }
 
 export default function Location(props) {
-  const {
-    data: { results: locations, info }
-  } = props;
+  const { locations, info, currentPage } = props;
 
   const router = useRouter();
 
   const headers = ['Name', 'Type', 'Dimension'];
+
+  const changePage = (type) => {
+    if (!info[type]) {
+      return;
+    }
+
+    const searchParams = new URL(info[type]).searchParams;
+    const page = searchParams.get('page');
+
+    router.push(`/locations?page=${page}`);
+  };
 
   return (
     <>
@@ -66,7 +79,7 @@ export default function Location(props) {
             </div>
           </div>
         </div>
-        <PaginationButtons data={locations} info={info} />
+        <PaginationButtons changePage={changePage} currentPage={currentPage} />
       </div>
     </>
   );
