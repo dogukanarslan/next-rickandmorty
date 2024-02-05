@@ -19,12 +19,12 @@ export async function getServerSideProps(context) {
   };
 }
 
+const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
+
 export default function Home(props) {
   const { characters, info, currentPage } = props;
 
   const router = useRouter();
-
-  const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
   const changePage = (type) => {
     if (!info[type]) {

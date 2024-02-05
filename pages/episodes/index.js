@@ -18,12 +18,12 @@ export async function getServerSideProps(context) {
   };
 }
 
+const headers = ['Name', 'Air Date', 'Episode'];
+
 export default function Episode(props) {
   const { episodes, info, currentPage } = props;
 
   const router = useRouter();
-
-  const headers = ['Name', 'Air Date', 'Episode'];
 
   const changePage = (type) => {
     if (!info[type]) {
