@@ -18,12 +18,12 @@ export async function getServerSideProps(context) {
   };
 }
 
+const headers = ['Name', 'Type', 'Dimension'];
+
 export default function Location(props) {
   const { locations, info, currentPage } = props;
 
   const router = useRouter();
-
-  const headers = ['Name', 'Type', 'Dimension'];
 
   const changePage = (type) => {
     if (!info[type]) {
