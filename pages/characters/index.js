@@ -53,33 +53,31 @@ export default function Home(props) {
       <div className="container">
         <div className="row">
           <div className="col col-12">
-            <div className="scrollable-container">
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {headers.map((header) => (
-                      <th key={header}>{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {characters.map((character) => (
-                    <tr
-                      key={character.id}
-                      onClick={() =>
-                        router.push(`${router.pathname}/${character.id}`)
-                      }
-                    >
-                      <td>{character.name}</td>
-                      <td>{character.status}</td>
-                      <td>{character.species}</td>
-                      <td>{character.type}</td>
-                      <td>{character.gender}</td>
-                    </tr>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  {headers.map((header) => (
+                    <th key={header}>{header}</th>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {characters.map((character) => (
+                  <tr
+                    key={character.id}
+                    onClick={() =>
+                      router.push(`${router.pathname}/${character.id}`)
+                    }
+                  >
+                    <td>{character.name}</td>
+                    <td>{character.status}</td>
+                    <td>{character.species}</td>
+                    <td>{character.type}</td>
+                    <td>{character.gender}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <PaginationButtons changePage={changePage} currentPage={currentPage} />

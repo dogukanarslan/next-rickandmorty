@@ -51,31 +51,29 @@ export default function Episode(props) {
       <div className="container">
         <div className="row">
           <div className="col col-12">
-            <div className="scrollable-container">
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {headers.map((header) => (
-                      <th key={header}>{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {episodes.map((episode) => (
-                    <tr
-                      key={episode.id}
-                      onClick={() =>
-                        router.push(`${router.pathname}/${episode.id}`)
-                      }
-                    >
-                      <td>{episode.name}</td>
-                      <td>{episode.air_date}</td>
-                      <td>{episode.episode}</td>
-                    </tr>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  {headers.map((header) => (
+                    <th key={header}>{header}</th>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {episodes.map((episode) => (
+                  <tr
+                    key={episode.id}
+                    onClick={() =>
+                      router.push(`${router.pathname}/${episode.id}`)
+                    }
+                  >
+                    <td>{episode.name}</td>
+                    <td>{episode.air_date}</td>
+                    <td>{episode.episode}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <PaginationButtons changePage={changePage} currentPage={currentPage} />
