@@ -52,31 +52,29 @@ export default function Location(props) {
       <div className="container">
         <div className="row">
           <div className="col col-12">
-            <div className="scrollable-container">
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {headers.map((header) => (
-                      <th key={header}>{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {locations.map((location) => (
-                    <tr
-                      key={location.id}
-                      onClick={() =>
-                        router.push(`${router.pathname}/${location.id}`)
-                      }
-                    >
-                      <td>{location.name}</td>
-                      <td>{location.type}</td>
-                      <td>{location.dimension}</td>
-                    </tr>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  {headers.map((header) => (
+                    <th key={header}>{header}</th>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {locations.map((location) => (
+                  <tr
+                    key={location.id}
+                    onClick={() =>
+                      router.push(`${router.pathname}/${location.id}`)
+                    }
+                  >
+                    <td>{location.name}</td>
+                    <td>{location.type}</td>
+                    <td>{location.dimension}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <PaginationButtons changePage={changePage} currentPage={currentPage} />
