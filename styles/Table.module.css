@@ -1,8 +1,7 @@
 .table {
-  background: #495057;
+  background: var(--light-color);
   border-collapse: collapse;
   width: 100%;
-  color: #fff;
 }
 
 .table td,
@@ -12,9 +11,8 @@
 }
 
 .table tbody tr:hover {
-  font-weight: bold;
-  color: #222;
-  background-color: var(--secondary-color);
+  color: #fff;
+  background-color: var(--primary-color);
   transition: background-color 0.5s;
   cursor: pointer;
 }

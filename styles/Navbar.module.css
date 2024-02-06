@@ -1,8 +1,8 @@
 .navbar {
   color: #fff;
   background-color: var(--primary-color);
-  padding: 1rem;
-  border-bottom: 1px solid gray;
+  padding: .8rem;
+  border-bottom: 1px solid var(--light-color);
   text-transform: capitalize;
 }
 
