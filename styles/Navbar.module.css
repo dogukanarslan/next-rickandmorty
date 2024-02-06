@@ -1,16 +1,24 @@
 .navbar {
   color: #fff;
   background-color: var(--primary-color);
-  padding: .8rem;
-  border-bottom: 1px solid var(--light-color);
   text-transform: capitalize;
+  height: 60px;
 }
 
-.navbar ul {
+.navbar__nav {
+  height: 100%;
+  padding: 10px;
   display: flex;
+  align-items: center;
 }
 
-.navbar .title {
+.navbar__logo {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar__title {
   text-align: center;
 }
 
