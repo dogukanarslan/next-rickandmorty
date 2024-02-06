@@ -1,5 +1,4 @@
 .wrapper {
-  color: #fff;
   position: relative;
   width: 350px;
   margin-top: 10px;
@@ -24,5 +23,4 @@
   -webkit-appearance: none;
   width: 100%;
   padding: 8px;
-  border: none;
 }
