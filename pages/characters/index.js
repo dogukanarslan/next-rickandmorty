@@ -5,16 +5,24 @@ import PaginationButtons from '../../components/PaginationButtons';
 import SelectInput from '../../components/SelectInput';
 
 export async function getServerSideProps(context) {
-  const res = await fetch(
-    `${process.env.RICKANDMORTY_API}/character?page=${context.query.page}`
-  );
+  let url = `${process.env.RICKANDMORTY_API}/character?`;
+  if (context.query.page) {
+    url += `page=${context.query.page}`;
+  }
+
+  if (context.query.status) {
+    url += `&status=${context.query.status}`;
+  }
+
+  const res = await fetch(url);
   const data = await res.json();
 
   return {
     props: {
       characters: data.results,
       info: data.info,
-      currentPage: context.query.page || 1
+      currentPage: context.query.page || 1,
+      status: context.query.status || ''
     }
   };
 }
@@ -22,7 +30,7 @@ export async function getServerSideProps(context) {
 const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
 export default function Home(props) {
-  const { characters, info, currentPage } = props;
+  const { characters, info, currentPage, status } = props;
 
   const router = useRouter();
 
@@ -34,54 +42,60 @@ export default function Home(props) {
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
 
-    router.push(`/characters?page=${page}`);
+    let url = `/characters?page=${page}`;
+
+    if (status) {
+      url += `&status=${status}`;
+    }
+
+    router.push(url);
+  };
+
+  const changeStatus = (status) => {
+    let url = `/characters?status=${status}`;
+    if (currentPage) {
+      url += `&page=${currentPage}`;
+    }
+    router.push(url);
   };
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col col-6">
-            <SelectInput options={filters.statuses} label="Status" />
-          </div>
-          <div className="col col-6">
-            <SelectInput options={filters.genders} label="Gender" />
-          </div>
-        </div>
-      </div>
 
-      <div className="container">
-        <div className="row">
-          <div className="col col-12">
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  {headers.map((header) => (
-                    <th key={header}>{header}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {characters.map((character) => (
-                  <tr
-                    key={character.id}
-                    onClick={() =>
-                      router.push(`${router.pathname}/${character.id}`)
-                    }
-                  >
-                    <td>{character.name}</td>
-                    <td>{character.status}</td>
-                    <td>{character.species}</td>
-                    <td>{character.type}</td>
-                    <td>{character.gender}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <PaginationButtons changePage={changePage} currentPage={currentPage} />
-      </div>
+    
+      <SelectInput
+        options={filters.statuses}
+        label="Status"
+        onChange={(e) => changeStatus(e.target.value)}
+      />
+
+      <SelectInput options={filters.genders} label="Gender" />
+
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {characters.map((character) => (
+            <tr
+              key={character.id}
+              onClick={() => router.push(`${router.pathname}/${character.id}`)}
+            >
+              <td>{character.name}</td>
+              <td>{character.status}</td>
+              <td>{character.species}</td>
+              <td>{character.type}</td>
+              <td>{character.gender}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <PaginationButtons changePage={changePage} currentPage={currentPage} />
     </>
   );
 }
