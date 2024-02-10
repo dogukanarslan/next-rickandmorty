@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styles from '../../styles/Table.module.css';
+import styles from '../../styles/Home.module.css';
 import { filters } from '../../constants';
 import PaginationButtons from '../../components/PaginationButtons';
 import SelectInput from '../../components/SelectInput';
@@ -61,15 +61,15 @@ export default function Home(props) {
 
   return (
     <>
+      <div className={styles.filters}>
+        <SelectInput
+          options={filters.statuses}
+          label="Status"
+          onChange={(e) => changeStatus(e.target.value)}
+        />
 
-    
-      <SelectInput
-        options={filters.statuses}
-        label="Status"
-        onChange={(e) => changeStatus(e.target.value)}
-      />
-
-      <SelectInput options={filters.genders} label="Gender" />
+        <SelectInput options={filters.genders} label="Gender" />
+      </div>
 
       <table className={styles.table}>
         <thead>
