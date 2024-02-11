@@ -54,6 +54,7 @@ ul {
 .app__main {
   padding: 1rem;
   width: 100%;
+  overflow: auto;
 }
 
 .row {

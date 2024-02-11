@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styles from '../../styles/Table.module.css';
+import styles from '../../styles/Episodes.module.css';
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 
@@ -38,46 +38,34 @@ export default function Episode(props) {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col col-6">
-            <TextInput placeholder="Name" label="Name" />
-          </div>
-          <div className="col col-6">
-            <TextInput placeholder="Episode" label="Episode" />
-          </div>
-        </div>
+      <div className={styles.filters}>
+        <TextInput placeholder="Name" label="Name" />
+        <TextInput placeholder="Episode" label="Episode" />
       </div>
-      <div className="container">
-        <div className="row">
-          <div className="col col-12">
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  {headers.map((header) => (
-                    <th key={header}>{header}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {episodes.map((episode) => (
-                  <tr
-                    key={episode.id}
-                    onClick={() =>
-                      router.push(`${router.pathname}/${episode.id}`)
-                    }
-                  >
-                    <td>{episode.name}</td>
-                    <td>{episode.air_date}</td>
-                    <td>{episode.episode}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <PaginationButtons changePage={changePage} currentPage={currentPage} />
-      </div>
+
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {episodes.map((episode) => (
+            <tr
+              key={episode.id}
+              onClick={() => router.push(`${router.pathname}/${episode.id}`)}
+            >
+              <td>{episode.name}</td>
+              <td>{episode.air_date}</td>
+              <td>{episode.episode}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <PaginationButtons changePage={changePage} currentPage={currentPage} />
     </>
   );
 }
