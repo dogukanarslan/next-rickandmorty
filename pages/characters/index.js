@@ -14,15 +14,19 @@ export async function getServerSideProps(context) {
     url += `&status=${context.query.status}`;
   }
 
+  if (context.query.gender) {
+    url += `&gender=${context.query.gender}`;
+  }
+
   const res = await fetch(url);
   const data = await res.json();
-
   return {
     props: {
-      characters: data.results,
-      info: data.info,
+      characters: data.results || [],
+      info: data.info || {},
       currentPage: context.query.page || 1,
-      status: context.query.status || ''
+      status: context.query.status || '',
+      gender: context.query.gender || ''
     }
   };
 }
@@ -30,7 +34,7 @@ export async function getServerSideProps(context) {
 const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
 export default function Home(props) {
-  const { characters, info, currentPage, status } = props;
+  const { characters, info, currentPage, status, gender } = props;
 
   const router = useRouter();
 
@@ -53,6 +57,23 @@ export default function Home(props) {
 
   const changeStatus = (status) => {
     let url = `/characters?status=${status}`;
+    if (gender) {
+      url += `&gender=${gender}`;
+    }
+
+    if (currentPage) {
+      url += `&page=${currentPage}`;
+    }
+    router.push(url);
+  };
+
+  const changeGender = (gender) => {
+    let url = `/characters?gender=${gender}`;
+
+    if (status) {
+      url += `&status=${status}`;
+    }
+
     if (currentPage) {
       url += `&page=${currentPage}`;
     }
@@ -63,12 +84,18 @@ export default function Home(props) {
     <>
       <div className={styles.filters}>
         <SelectInput
+          value={status}
           options={filters.statuses}
           label="Status"
           onChange={(e) => changeStatus(e.target.value)}
         />
 
-        <SelectInput options={filters.genders} label="Gender" />
+        <SelectInput
+          value={gender}
+          options={filters.genders}
+          label="Gender"
+          onChange={(e) => changeGender(e.target.value)}
+        />
       </div>
 
       <table className={styles.table}>
