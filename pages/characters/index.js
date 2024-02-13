@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
 
 const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
-export default function Home(props) {
+const Characters = (props) => {
   const { characters, info, currentPage, status, gender } = props;
 
   const router = useRouter();
@@ -125,4 +125,6 @@ export default function Home(props) {
       <PaginationButtons changePage={changePage} currentPage={currentPage} />
     </>
   );
-}
+};
+
+export default Characters;
