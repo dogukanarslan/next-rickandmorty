@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
 import '../styles/globals.css';
+
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
@@ -10,7 +12,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
-      <Head></Head>
+      <Head>
+        <title>Rick and Morty</title>
+      </Head>
       <div className="app">
         <Navbar />
         <main>

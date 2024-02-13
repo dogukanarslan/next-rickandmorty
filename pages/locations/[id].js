@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import LocationDetail from '../../components/LocationDetail';
 
 export async function getServerSideProps(context) {
@@ -16,7 +18,14 @@ export async function getServerSideProps(context) {
 const Location = (props) => {
   const { location } = props;
 
-  return <LocationDetail location={location} />;
+  return (
+    <>
+      <Head>
+        <title>Rick and Morty | Location Detail</title>
+      </Head>
+      <LocationDetail location={location} />
+    </>
+  );
 };
 
 export default Location;
