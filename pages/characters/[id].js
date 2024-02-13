@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import CharacterDetail from '../../components/CharacterDetail';
 
 export async function getServerSideProps(context) {
@@ -16,7 +18,14 @@ export async function getServerSideProps(context) {
 const Character = (props) => {
   const { character } = props;
 
-  return <CharacterDetail character={character} />;
+  return (
+    <>
+      <Head>
+        <title>Rick and Morty | Character Detail</title>
+      </Head>
+      <CharacterDetail character={character} />
+    </>
+  );
 };
 
 export default Character;

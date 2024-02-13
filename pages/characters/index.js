@@ -1,8 +1,11 @@
 import { useRouter } from 'next/router';
-import styles from '../../styles/Home.module.css';
+import Head from 'next/head';
+
 import { filters } from '../../constants';
 import PaginationButtons from '../../components/PaginationButtons';
 import SelectInput from '../../components/SelectInput';
+
+import styles from '../../styles/Home.module.css';
 
 export async function getServerSideProps(context) {
   let url = `${process.env.RICKANDMORTY_API}/character?`;
@@ -82,6 +85,9 @@ const Characters = (props) => {
 
   return (
     <>
+      <Head>
+        <title>Rick and Morty | Characters</title>
+      </Head>
       <div className={styles.filters}>
         <SelectInput
           value={status}

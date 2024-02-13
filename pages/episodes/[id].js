@@ -1,5 +1,5 @@
+import Head from 'next/head';
 import EpisodeDetail from '../../components/EpisodeDetail';
-
 
 export async function getServerSideProps(context) {
   const res = await fetch(
@@ -17,7 +17,14 @@ export async function getServerSideProps(context) {
 const Episode = (props) => {
   const { episode } = props;
 
-  return <EpisodeDetail episode={episode} />;
+  return (
+    <>
+      <Head>
+        <title>Rick and Morty | Episode Detail</title>
+      </Head>
+      <EpisodeDetail episode={episode} />
+    </>
+  );
 };
 
 export default Episode;

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
@@ -40,6 +41,9 @@ const Locations = (props) => {
 
   return (
     <>
+      <Head>
+        <title>Rick and Morty | Locations</title>
+      </Head>
       <div className={styles.filters}>
         <TextInput placeholder="Name" label="Name" />
         <TextInput placeholder="Dimension" label="Dimension" />
