@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
 import styles from '../../styles/Episodes.module.css';
+
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 
@@ -38,6 +41,9 @@ const Episodes = (props) => {
 
   return (
     <>
+      <Head>
+        <title>Rick and Morty | Episodes</title>
+      </Head>
       <div className={styles.filters}>
         <TextInput placeholder="Name" label="Name" />
         <TextInput placeholder="Episode" label="Episode" />
