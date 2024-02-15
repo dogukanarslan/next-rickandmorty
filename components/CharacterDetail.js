@@ -1,14 +1,27 @@
 import Image from 'next/image';
-import styles from '../styles/DetailCard.module.css';
+import styles from '../styles/CharacterDetail.module.css';
 
 const CharacterDetail = (props) => {
-  const { name, gender, image } = props.character;
+  const { name, status, gender, image, species } = props.character;
+
+  console.log(props.character);
 
   return (
-    <div className={styles.detailCard}>
-      <Image src={image} alt="Character" width={200} height={200} />
-      <h4>{name}</h4>
-      <h4>{gender}</h4>
+    <div className={styles.wrapper}>
+      <Image
+        src={image}
+        className={styles.image}
+        alt="Character"
+        width={250}
+        height={250}
+      />
+
+      <div className={styles.details}>
+        <h1>{name}</h1>
+        <p>{species}</p>
+        <p>{status}</p>
+        <p>{gender}</p>
+      </div>
     </div>
   );
 };
