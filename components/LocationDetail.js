@@ -1,13 +1,15 @@
-import styles from '../styles/DetailCard.module.css';
+import styles from '../styles/CharacterDetail.module.css';
 
 const LocationDetail = (props) => {
   const { name, type, dimension } = props.location;
 
   return (
-    <div className={styles.detailCard}>
-      <h4>{name}</h4>
-      <h4>{type}</h4>
-      <h4>{dimension}</h4>
+    <div className={styles.wrapper}>
+      <div className={styles.details}>
+        <h1>{name}</h1>
+        <p>{type}</p>
+        <p>{dimension}</p>
+      </div>
     </div>
   );
 };
