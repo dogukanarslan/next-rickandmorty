@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  column-gap: 2rem;
+}
+
+.details * + * {
+  margin-top: 0.5rem;
+}
