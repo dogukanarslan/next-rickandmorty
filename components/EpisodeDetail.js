@@ -1,13 +1,15 @@
-import styles from '../styles/DetailCard.module.css';
+import styles from '../styles/EpisodeDetail.module.css';
 
 const EpisodeDetail = (props) => {
   const { name, air_date, episode } = props.episode;
 
   return (
-    <div className={styles.detailCard}>
-      <h4>{name}</h4>
-      <h4>{air_date}</h4>
-      <h4>{episode}</h4>
+    <div className={styles.wrapper}>
+      <div className={styles.details}>
+        <h1>{name}</h1>
+        <p>{air_date}</p>
+        <p>{episode}</p>
+      </div>
     </div>
   );
 };
