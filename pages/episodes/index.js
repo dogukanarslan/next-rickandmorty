@@ -8,22 +8,18 @@ import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 
+import { generateQuery } from '../../utils';
+
 export async function getServerSideProps(context) {
-  let url = `${process.env.RICKANDMORTY_API}/episode?page=${context.query.page}`;
+  let url = `${process.env.RICKANDMORTY_API}/episode?`;
 
   const { page = 1, name = '', episode = '' } = context.query;
 
-  if (page) {
-    url += `&page=${page}`;
-  }
-
-  if (name) {
-    url += `&name=${name}`;
-  }
-
-  if (episode) {
-    url += `&name=${episode}`;
-  }
+  url += generateQuery([
+    { label: 'page', value: page },
+    { label: 'name', value: name },
+    { label: 'episode', value: episode }
+  ]);
 
   const res = await fetch(url);
   const data = await res.json();
@@ -46,8 +42,6 @@ const headers = ['Name', 'Air Date', 'Episode'];
 const Episodes = (props) => {
   const { episodes, info, currentFilters } = props;
 
-  console.log(currentFilters)
-
   const [name, setName] = useState(currentFilters.name);
   const [episode, setEpisode] = useState(currentFilters.episode);
 
@@ -61,7 +55,15 @@ const Episodes = (props) => {
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
 
-    router.push(`/episodes?page=${page}`);
+    let url = `/episodes?`;
+
+    url += generateQuery([
+      { label: 'page', value: page },
+      { label: 'name', value: name },
+      { label: 'episode', value: episode }
+    ]);
+
+    router.push(url);
   };
 
   const filterEpisodes = (e) => {
@@ -69,13 +71,10 @@ const Episodes = (props) => {
 
     let url = `/episodes?`;
 
-    if (name) {
-      url += `&name=${name}`;
-    }
-
-    if (episode) {
-      url += `&episode=${episode}`;
-    }
+    url += generateQuery([
+      { label: 'name', value: name },
+      { label: 'episode', value: episode }
+    ]);
 
     router.push(url);
   };

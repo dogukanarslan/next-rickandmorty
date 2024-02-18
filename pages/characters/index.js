@@ -9,22 +9,18 @@ import SelectInput from '../../components/SelectInput';
 import styles from '../../styles/Home.module.css';
 import Button from '../../components/Button';
 
+import { generateQuery } from '../../utils';
+
 export async function getServerSideProps(context) {
   let url = `${process.env.RICKANDMORTY_API}/character?`;
 
   const { page = 1, status = '', gender = '' } = context.query;
 
-  if (page) {
-    url += `page=${page}`;
-  }
-
-  if (status) {
-    url += `&status=${status}`;
-  }
-
-  if (gender) {
-    url += `&gender=${gender}`;
-  }
+  url += generateQuery([
+    { label: 'page', value: page },
+    { label: 'status', value: status },
+    { label: 'gender', value: gender }
+  ]);
 
   const res = await fetch(url);
   const data = await res.json();
@@ -59,11 +55,13 @@ const Characters = (props) => {
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
 
-    let url = `/characters?page=${page}`;
+    let url = `/characters?`;
 
-    if (status) {
-      url += `&status=${status}`;
-    }
+    url += generateQuery([
+      { label: 'page', value: page },
+      { label: 'status', value: status },
+      { label: 'gender', value: gender }
+    ]);
 
     router.push(url);
   };
@@ -72,13 +70,11 @@ const Characters = (props) => {
     e.preventDefault();
 
     let url = `/characters?`;
-    if (gender) {
-      url += `&gender=${gender}`;
-    }
 
-    if (status) {
-      url += `&status=${status}`;
-    }
+    url += generateQuery([
+      { label: 'status', value: status },
+      { label: 'gender', value: gender }
+    ]);
 
     router.push(url);
   };
