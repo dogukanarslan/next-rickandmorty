@@ -8,7 +8,6 @@ Run the development server:
 ```bash
 npm run dev
 ```
-
 Run the linter:
 ```bash
 npm run lint
