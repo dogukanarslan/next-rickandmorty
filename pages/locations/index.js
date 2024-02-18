@@ -1,22 +1,43 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
 
 import styles from '../../styles/Locations.module.css';
 
 export async function getServerSideProps(context) {
-  const res = await fetch(
-    `${process.env.RICKANDMORTY_API}/location?page=${context.query.page}`
-  );
+  let url = `${process.env.RICKANDMORTY_API}/location?`;
+
+  const { page = 1, name = '', dimension = '' } = context.query;
+
+  if (page) {
+    url += `&page=${page}`;
+  }
+
+  if (name) {
+    url += `&name=${name}`;
+  }
+
+  if (dimension) {
+    url += `&dimension=${dimension}`;
+  }
+
+  const res = await fetch(url);
   const data = await res.json();
 
   return {
     props: {
-      locations: data.results,
-      info: data.info,
-      currentPage: context.query.page || 1
+      locations: data.results || [],
+      info: data.info || {},
+      currentPage: context.query.page || 1,
+      filters: {
+        currentPage: page,
+        currentName: name,
+        currentDimension: dimension
+      }
     }
   };
 }
@@ -24,7 +45,10 @@ export async function getServerSideProps(context) {
 const headers = ['Name', 'Type', 'Dimension'];
 
 const Locations = (props) => {
-  const { locations, info, currentPage } = props;
+  const { locations, info, currentPage, filters } = props;
+
+  const [name, setName] = useState(filters.currentName);
+  const [dimension, setDimension] = useState(filters.currentDimension);
 
   const router = useRouter();
 
@@ -33,10 +57,40 @@ const Locations = (props) => {
       return;
     }
 
+    let url = `/locations?`;
+
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
 
-    router.push(`/locations?page=${page}`);
+    if (page) {
+      url += `&page=${page}`;
+    }
+
+    if (name) {
+      url += `&name=${name}`;
+    }
+
+    if (dimension) {
+      url += `&dimension=${dimension}`;
+    }
+
+    router.push(url);
+  };
+
+  const searchLocation = (e) => {
+    e.preventDefault();
+
+    let url = `/locations?`;
+
+    if (name) {
+      url += `&name=${name}`;
+    }
+
+    if (dimension) {
+      url += `&dimension=${dimension}`;
+    }
+
+    router.push(url);
   };
 
   return (
@@ -44,10 +98,22 @@ const Locations = (props) => {
       <Head>
         <title>Rick and Morty | Locations</title>
       </Head>
-      <div className={styles.filters}>
-        <TextInput placeholder="Name" label="Name" />
-        <TextInput placeholder="Dimension" label="Dimension" />
-      </div>
+
+      <form onSubmit={searchLocation} className={styles.filters}>
+        <TextInput
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+          label="Name"
+        />
+        <TextInput
+          value={dimension}
+          onChange={(e) => setDimension(e.target.value)}
+          placeholder="Dimension"
+          label="Dimension"
+        />
+        <Button label="Search" onClick={searchLocation} />
+      </form>
 
       <table className={styles.table}>
         <thead>
