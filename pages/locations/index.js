@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
     props: {
       locations: data.results || [],
       info: data.info || {},
-      currentPage: context.query.page || 1,
+currentPage: context.query.page || 1,
       filters: {
         currentPage: page,
         currentName: name,

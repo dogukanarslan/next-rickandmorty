@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
@@ -6,19 +7,23 @@ import PaginationButtons from '../../components/PaginationButtons';
 import SelectInput from '../../components/SelectInput';
 
 import styles from '../../styles/Home.module.css';
+import Button from '../../components/Button';
 
 export async function getServerSideProps(context) {
   let url = `${process.env.RICKANDMORTY_API}/character?`;
-  if (context.query.page) {
-    url += `page=${context.query.page}`;
+
+  const { page = 1, status = '', gender = '' } = context.query;
+
+  if (page) {
+    url += `page=${page}`;
   }
 
-  if (context.query.status) {
-    url += `&status=${context.query.status}`;
+  if (status) {
+    url += `&status=${status}`;
   }
 
-  if (context.query.gender) {
-    url += `&gender=${context.query.gender}`;
+  if (gender) {
+    url += `&gender=${gender}`;
   }
 
   const res = await fetch(url);
@@ -27,9 +32,11 @@ export async function getServerSideProps(context) {
     props: {
       characters: data.results || [],
       info: data.info || {},
-      currentPage: context.query.page || 1,
-      status: context.query.status || '',
-      gender: context.query.gender || ''
+      currentFilters: {
+        page,
+        status,
+        gender
+      }
     }
   };
 }
@@ -37,7 +44,10 @@ export async function getServerSideProps(context) {
 const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
 
 const Characters = (props) => {
-  const { characters, info, currentPage, status, gender } = props;
+  const { characters, info, currentFilters } = props;
+
+  const [status, setStatus] = useState(currentFilters.status);
+  const [gender, setGender] = useState(currentFilters.gender);
 
   const router = useRouter();
 
@@ -58,28 +68,18 @@ const Characters = (props) => {
     router.push(url);
   };
 
-  const changeStatus = (status) => {
-    let url = `/characters?status=${status}`;
+  const filterCharacters = (e) => {
+    e.preventDefault();
+
+    let url = `/characters?`;
     if (gender) {
       url += `&gender=${gender}`;
     }
-
-    if (currentPage) {
-      url += `&page=${currentPage}`;
-    }
-    router.push(url);
-  };
-
-  const changeGender = (gender) => {
-    let url = `/characters?gender=${gender}`;
 
     if (status) {
       url += `&status=${status}`;
     }
 
-    if (currentPage) {
-      url += `&page=${currentPage}`;
-    }
     router.push(url);
   };
 
@@ -88,21 +88,23 @@ const Characters = (props) => {
       <Head>
         <title>Rick and Morty | Characters</title>
       </Head>
-      <div className={styles.filters}>
+      <form className={styles.filters} onSubmit={filterCharacters}>
         <SelectInput
           value={status}
           options={filters.statuses}
           label="Status"
-          onChange={(e) => changeStatus(e.target.value)}
+          onChange={(e) => setStatus(e.target.value)}
         />
 
         <SelectInput
           value={gender}
           options={filters.genders}
           label="Gender"
-          onChange={(e) => changeGender(e.target.value)}
+          onChange={(e) => setGender(e.target.value)}
         />
-      </div>
+
+        <Button label="Search" />
+      </form>
 
       <table className={styles.table}>
         <thead>
@@ -128,7 +130,10 @@ const Characters = (props) => {
         </tbody>
       </table>
 
-      <PaginationButtons changePage={changePage} currentPage={currentPage} />
+      <PaginationButtons
+        changePage={changePage}
+        currentPage={currentFilters.page}
+      />
     </>
   );
 };
