@@ -32,11 +32,10 @@ export async function getServerSideProps(context) {
     props: {
       locations: data.results || [],
       info: data.info || {},
-currentPage: context.query.page || 1,
-      filters: {
-        currentPage: page,
-        currentName: name,
-        currentDimension: dimension
+      currentFilters: {
+        page,
+        name,
+        dimension
       }
     }
   };
@@ -45,10 +44,10 @@ currentPage: context.query.page || 1,
 const headers = ['Name', 'Type', 'Dimension'];
 
 const Locations = (props) => {
-  const { locations, info, currentPage, filters } = props;
+  const { locations, info, currentFilters } = props;
 
-  const [name, setName] = useState(filters.currentName);
-  const [dimension, setDimension] = useState(filters.currentDimension);
+  const [name, setName] = useState(currentFilters.name);
+  const [dimension, setDimension] = useState(currentFilters.dimension);
 
   const router = useRouter();
 
@@ -137,7 +136,10 @@ const Locations = (props) => {
         </tbody>
       </table>
 
-      <PaginationButtons changePage={changePage} currentPage={currentPage} />
+      <PaginationButtons
+        changePage={changePage}
+        currentPage={currentFilters.page}
+      />
     </>
   );
 };
