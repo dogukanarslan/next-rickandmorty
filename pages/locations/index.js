@@ -6,6 +6,8 @@ import PaginationButtons from '../../components/PaginationButtons';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 
+import { generateQuery } from '../../utils';
+
 import styles from '../../styles/Locations.module.css';
 
 export async function getServerSideProps(context) {
@@ -13,17 +15,11 @@ export async function getServerSideProps(context) {
 
   const { page = 1, name = '', dimension = '' } = context.query;
 
-  if (page) {
-    url += `&page=${page}`;
-  }
-
-  if (name) {
-    url += `&name=${name}`;
-  }
-
-  if (dimension) {
-    url += `&dimension=${dimension}`;
-  }
+  url += generateQuery([
+    { label: 'page', value: page },
+    { label: 'name', value: name },
+    { label: 'dimension', value: dimension }
+  ]);
 
   const res = await fetch(url);
   const data = await res.json();
@@ -61,17 +57,11 @@ const Locations = (props) => {
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
 
-    if (page) {
-      url += `&page=${page}`;
-    }
-
-    if (name) {
-      url += `&name=${name}`;
-    }
-
-    if (dimension) {
-      url += `&dimension=${dimension}`;
-    }
+    url += generateQuery([
+      { label: 'page', value: page },
+      { label: 'name', value: name },
+      { label: 'dimension', value: dimension }
+    ]);
 
     router.push(url);
   };
@@ -81,13 +71,10 @@ const Locations = (props) => {
 
     let url = `/locations?`;
 
-    if (name) {
-      url += `&name=${name}`;
-    }
-
-    if (dimension) {
-      url += `&dimension=${dimension}`;
-    }
+    url += generateQuery([
+      { label: 'name', value: name },
+      { label: 'dimension', value: dimension }
+    ]);
 
     router.push(url);
   };
