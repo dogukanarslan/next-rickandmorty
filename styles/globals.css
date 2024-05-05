@@ -47,10 +47,6 @@ ul {
   height: calc(100vh - 60px);
 }
 
-.app__sidebar {
-  width: 200px;
-}
-
 .app__main {
   padding: 1rem;
   width: 100%;
