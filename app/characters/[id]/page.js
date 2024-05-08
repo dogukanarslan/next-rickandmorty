@@ -1,10 +1,14 @@
 import Image from 'next/image';
-import styles from '../styles/CharacterDetail.module.css';
+import styles from '../../../styles/CharacterDetail.module.css';
 
-const CharacterDetail = (props) => {
-  const { name, status, gender, image, species } = props.character;
+const getData = async (id) => {
+  const res = await fetch(`${process.env.RICKANDMORTY_API}/character/${id}`);
 
-  console.log(props.character);
+  return res.json();
+};
+
+const CharacterDetailPage = async ({ params }) => {
+  const { species, name, status, gender, image } = await getData(params.id);
 
   return (
     <div className={styles.wrapper}>
@@ -26,4 +30,4 @@ const CharacterDetail = (props) => {
   );
 };
 
-export default CharacterDetail;
+export default CharacterDetailPage;
