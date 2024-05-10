@@ -12,18 +12,33 @@ const CharacterDetailPage = async ({ params }) => {
 
   return (
     <div className={styles.wrapper}>
+      <h1 className={styles.label}>Character</h1>
+
       <Image
         src={image}
         className={styles.image}
         alt="Character"
-        width={250}
-        height={250}
+        width={150}
+        height={150}
       />
 
-      <div className={styles.details}>
-        <h1>{name}</h1>
+      <div className={styles.boxItem}>
+        <div className={styles.boxItemHeading}>Name</div>
+        <p>{name}</p>
+      </div>
+
+      <div className={styles.boxItem}>
+        <div className={styles.boxItemHeading}>Species</div>
         <p>{species}</p>
+      </div>
+
+      <div className={styles.boxItem}>
+        <div className={styles.boxItemHeading}>Status</div>
         <p>{status}</p>
+      </div>
+
+      <div className={styles.boxItem}>
+        <div className={styles.boxItemHeading}>Gender</div>
         <p>{gender}</p>
       </div>
     </div>

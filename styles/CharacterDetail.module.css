@@ -1,13 +1,27 @@
 .wrapper {
-  display: flex;
-  padding: 1rem;
-  column-gap: 2rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.label {
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid var(--primary-color);
 }
 
 .image {
   border-radius: 100%;
+  margin-top: 1rem;
 }
 
-.details * + * {
-  margin-top: 0.5rem;
+.boxItem {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.boxItemHeading {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
