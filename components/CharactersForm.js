@@ -14,7 +14,7 @@ import { filters } from '../constants';
 const CharactersForm = () => {
   const searchParams = useSearchParams();
 
-  const [status, setStatus] = useState(searchParams.get('status' || ''));
+  const [status, setStatus] = useState(searchParams.get('status') || '');
   const [gender, setGender] = useState(searchParams.get('gender') || '');
 
   const router = useRouter();
