@@ -5,7 +5,7 @@
   color: #fff;
   background-color: var(--primary-color);
   text-transform: capitalize;
-  height: 60px;
+  height: var(--navbar-height);
   padding: 20px;
 }
 
