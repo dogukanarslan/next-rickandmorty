@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import SelectInput from './SelectInput';
-import { generateQuery } from '../utils';
+import SelectInput from 'components/SelectInput';
+import { generateQuery } from 'utils';
 
 import Button from './Button';
 

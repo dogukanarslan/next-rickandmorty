@@ -1,5 +1,5 @@
-import styles from '../styles/EpisodeList.module.css';
-import ViewButton from './ViewButton';
+import styles from 'styles/EpisodeList.module.css';
+import ViewButton from 'components/ViewButton';
 
 const EpisodeList = (props) => {
   const { episodes } = props;

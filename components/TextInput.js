@@ -1,4 +1,4 @@
-import styles from '../styles/TextInput.module.css';
+import styles from 'styles/TextInput.module.css';
 
 const TextInput = (props) => {
   const { value, label, onChange, placeholder } = props;

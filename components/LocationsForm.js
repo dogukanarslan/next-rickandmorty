@@ -7,7 +7,7 @@ import { generateQuery } from '../utils';
 import Button from './Button';
 import TextInput from './TextInput';
 
-import { filters } from '../constants';
+import { filters } from 'constants';
 
 const LocationsForm = () => {
   const searchParams = useSearchParams();

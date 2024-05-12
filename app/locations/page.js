@@ -1,8 +1,8 @@
-import { generateQuery } from '../../utils';
+import { generateQuery } from 'utils';
 
-import LocationsForm from '../../components/LocationsForm';
-import LocationList from '../../components/LocationList';
-import PaginationButtons from '../../components/PaginationButtons';
+import LocationsForm from 'components/LocationsForm';
+import LocationList from 'components/LocationList';
+import PaginationButtons from 'components/PaginationButtons';
 
 const getData = async (params) => {
   let url = `${process.env.RICKANDMORTY_API}/location?`;

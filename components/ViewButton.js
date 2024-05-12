@@ -1,9 +1,8 @@
 'use client';
 
-import React from 'react';
 import { useRouter } from 'next/navigation';
 
-import Button from './Button';
+import Button from 'components/Button';
 
 const ViewButton = (props) => {
   const { url } = props;
