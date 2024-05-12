@@ -1,5 +1,5 @@
-import styles from '../styles/LocationList.module.css';
-import ViewButton from './ViewButton';
+import styles from 'styles/LocationList.module.css';
+import ViewButton from 'components/ViewButton';
 
 const LocationList = (props) => {
   const { locations } = props;

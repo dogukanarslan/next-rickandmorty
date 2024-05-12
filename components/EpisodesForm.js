@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { generateQuery } from '../utils';
+import { generateQuery } from 'utils';
 
 import Button from './Button';
 import TextInput from './TextInput';

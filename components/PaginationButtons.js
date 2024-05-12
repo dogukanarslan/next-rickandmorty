@@ -1,9 +1,9 @@
 'use client';
 
-import Button from './Button';
+import Button from 'components/Button';
 import { usePathname, useRouter } from 'next/navigation';
-import { generateQuery } from '../utils';
-import styles from '../styles/PaginationButtons.module.css';
+import { generateQuery } from 'utils';
+import styles from 'styles/PaginationButtons.module.css';
 
 const PaginationButtons = (props) => {
   const { info, currentPage } = props;

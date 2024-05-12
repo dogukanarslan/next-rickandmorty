@@ -1,4 +1,4 @@
-import styles from '../styles/SelectInput.module.css';
+import styles from 'styles/SelectInput.module.css';
 
 const SelectInput = (props) => {
   const { label, onChange, options, value } = props;

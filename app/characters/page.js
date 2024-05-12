@@ -1,9 +1,8 @@
-import { generateQuery } from '../../utils';
+import { generateQuery } from 'utils';
 
-import PaginationButtons from '../../components/PaginationButtons';
-import CharactersForm from '../../components/CharactersForm';
-
-import CharacterList from '../../components/CharacterList';
+import PaginationButtons from 'components/PaginationButtons';
+import CharactersForm from 'components/CharactersForm';
+import CharacterList from 'components/CharacterList';
 
 const getData = async (params) => {
   let url = `${process.env.RICKANDMORTY_API}/character?`;

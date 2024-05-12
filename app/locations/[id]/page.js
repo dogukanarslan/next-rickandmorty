@@ -1,4 +1,4 @@
-import styles from '../../../styles/LocationDetail.module.css';
+import styles from 'styles/LocationDetail.module.css';
 
 const getData = async (id) => {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/location/${id}`);

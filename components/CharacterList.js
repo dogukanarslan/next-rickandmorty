@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import styles from '../styles/CharacterList.module.css';
-import ViewButton from './ViewButton';
+import styles from 'styles/CharacterList.module.css';
+import ViewButton from 'components/ViewButton';
 
 const CharacterList = (props) => {
   const { characters } = props;

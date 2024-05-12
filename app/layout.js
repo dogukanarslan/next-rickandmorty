@@ -1,6 +1,6 @@
-import Navbar from '../components/Navbar';
+import Navbar from 'components/Navbar';
 
-import '../styles/globals.css';
+import 'styles/globals.css';
 
 export const metadata = {
   title: 'Rick and Morty',

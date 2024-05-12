@@ -1,4 +1,4 @@
-import styles from '../../../styles/EpisodeDetail.module.css';
+import styles from 'styles/EpisodeDetail.module.css';
 
 const getData = async (id) => {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/episode/${id}`);

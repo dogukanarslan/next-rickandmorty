@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import styles from '../../../styles/CharacterDetail.module.css';
+
+import styles from 'styles/CharacterDetail.module.css';
 
 const getData = async (id) => {
   const res = await fetch(`${process.env.RICKANDMORTY_API}/character/${id}`);
