@@ -3,8 +3,7 @@ import { generateQuery } from '../../utils';
 import PaginationButtons from '../../components/PaginationButtons';
 import CharactersForm from '../../components/CharactersForm';
 
-import styles from '../../styles/Home.module.css';
-import CharacterRow from '../../components/CharacterRow';
+import CharacterList from '../../components/CharacterList';
 
 const getData = async (params) => {
   let url = `${process.env.RICKANDMORTY_API}/character?`;
@@ -22,29 +21,13 @@ const getData = async (params) => {
   return res.json();
 };
 
-const headers = ['Name', 'Status', 'Species', 'Type', 'Gender'];
-
 const CharactersPage = async (props) => {
   const { results: characters, info } = await getData(props.searchParams);
 
   return (
     <>
       <CharactersForm />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {characters.map((character) => (
-            <CharacterRow key={character.id} character={character} />
-          ))}
-        </tbody>
-      </table>
-
+      <CharacterList characters={characters} />
       <PaginationButtons
         info={info}
         currentPage={props.searchParams.page || 1}
