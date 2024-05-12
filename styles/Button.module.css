@@ -1,10 +1,21 @@
 .btn {
-  border: 0;
+  border-width: 1px;
+  border-style: solid;
   padding: 8px 16px;
-  border-radius: 12px;
-  color: #fff;
-  background-color: var(--secondary-color);
+  border-radius: 8px;
   cursor: pointer;
+}
+
+.primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+.secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: #fff;
 }
 
 .btn:hover {
