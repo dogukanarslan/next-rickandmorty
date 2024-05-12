@@ -7,8 +7,6 @@ import { generateQuery } from '../utils';
 
 import Button from './Button';
 
-import styles from '../styles/Home.module.css';
-
 import { filters } from '../constants';
 
 const CharactersForm = () => {
@@ -33,7 +31,7 @@ const CharactersForm = () => {
   };
 
   return (
-    <form className={styles.filters} onSubmit={filterCharacters}>
+    <form onSubmit={filterCharacters}>
       <SelectInput
         value={status}
         options={filters.statuses}

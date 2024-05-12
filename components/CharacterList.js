@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import styles from '../styles/CharacterList.module.css';
-import ViewCharacterButton from './ViewCharacterButton';
+import ViewButton from './ViewButton';
 
 const CharacterList = (props) => {
   const { characters } = props;
@@ -23,7 +23,7 @@ const CharacterList = (props) => {
             <p>Species: {character.species}</p>
             <p>Gender: {character.gender}</p>
             <div className={styles.buttonWrapper}>
-              <ViewCharacterButton id={character.id} />
+              <ViewButton url={`/characters/${character.id}`} />
             </div>
           </div>
         </div>
