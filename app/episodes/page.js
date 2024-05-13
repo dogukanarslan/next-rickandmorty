@@ -1,8 +1,8 @@
 import { generateQuery } from 'utils';
 
 import PaginationButtons from 'components/PaginationButtons';
-import EpisodesForm from 'components/EpisodesForm';
-import EpisodeList from 'components/EpisodeList';
+import EpisodesForm from 'lib/EpisodesForm';
+import EpisodeList from 'lib/EpisodeList';
 
 const getData = async (params) => {
   let url = `${process.env.RICKANDMORTY_API}/episode?`;

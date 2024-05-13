@@ -1,7 +1,7 @@
 import { generateQuery } from 'utils';
 
-import LocationsForm from 'components/LocationsForm';
-import LocationList from 'components/LocationList';
+import LocationsForm from 'lib/LocationsForm';
+import LocationList from 'lib/LocationList';
 import PaginationButtons from 'components/PaginationButtons';
 
 const getData = async (params) => {
