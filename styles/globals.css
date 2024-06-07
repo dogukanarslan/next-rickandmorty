@@ -29,4 +29,6 @@ a {
 .app__main {
   padding: 10px;
   height: calc(100% - var(--navbar-height));
+  max-width: 1024px;
+  margin: 0 auto;
 }
