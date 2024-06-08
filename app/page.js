@@ -1,5 +1,14 @@
+'use client';
+
+import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  useEffect(() => {
+    redirect('/characters');
+  }, []);
+
+  return;
 };
 
 export default HomePage;
