@@ -1,8 +1,12 @@
 .navbar {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
   color: #fff;
   background-color: var(--primary-color);
   text-transform: capitalize;
-  height: 60px;
+  height: var(--navbar-height);
+  padding: 20px;
 }
 
 .navbar__nav {
@@ -12,16 +16,12 @@
   align-items: center;
 }
 
+.navbar__nav li + li {
+  margin-left: 10px;
+}
+
 .navbar__logo {
   color: var(--secondary-color);
   text-transform: uppercase;
   font-weight: bold;
-}
-
-.navbar__title {
-  text-align: center;
-}
-
-.navbar li {
-  width: 100%;
 }
