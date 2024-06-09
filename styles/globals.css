@@ -32,3 +32,10 @@ a {
   max-width: 1024px;
   margin: 0 auto;
 }
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - var(--navbar-height));
+}
