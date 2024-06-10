@@ -27,6 +27,8 @@ a {
 }
 
 .app__main {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   height: calc(100% - var(--navbar-height));
   max-width: 1024px;
