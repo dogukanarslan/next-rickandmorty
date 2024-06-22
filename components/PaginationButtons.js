@@ -18,8 +18,14 @@ const PaginationButtons = (props) => {
 
     const searchParams = new URL(info[type]).searchParams;
     const page = searchParams.get('page');
+    const status = searchParams.get('status');
+    const gender = searchParams.get('gender');
 
-    const url = `${pathname}?${generateQuery([{ label: 'page', value: page }])}`;
+    const url = `${pathname}?${generateQuery([
+      { label: 'page', value: page },
+      { label: 'status', value: status },
+      { label: 'gender', value: gender }
+    ])}`;
 
     router.push(url);
   };
